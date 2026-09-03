@@ -10,7 +10,7 @@
 # Assignment: Lab Topic 2 (team)
 # Date: 2/9/2026
 #Calculate distance from Houston between minutes 10 and 55
-from math import *
+from math import * 
 x1= (10)
 x2= (55)
 y1= (2030)
@@ -20,10 +20,10 @@ slope= ((y2-y1)/(x2-x1))
 y= float(slope * (x - x1)+ y1)
 print("Part 1:")
 print("For t =", x, "minutes, the position p =", y, "kilometers")
-x = 300
-r = 6745 
+x = (300)
+r = (6745)
 c = (2 * pi * r)
-y = y1 + slope * (x - x1)
+y = float(slope * (x - x1) + y1) 
 y %= c
 print("Part 2:")
-print ("For t=", x, "minutes the position p =", y , "kilometers")
+print("For t =", x, "minutes, the position p =", y, "kilometers") 
