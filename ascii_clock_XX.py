@@ -9,30 +9,52 @@
 # Section: M02
 # Assignment: Lab 4 group
 # Date: 09/16/2026
-# first we get a time 
-tm = input("Enter the time (HH:MM): ")
+###################################JG######################################
+Font= {
+":":["   ", " : ", "   ", " : ", "   "],
+'0':["rrr", "r r", "r r", "r r", "rrr"],
+'1':[" r ", "rr ", " r ", " r ", "rrr"],
+'2':["rrr", "  r", "rrr", "r  ", "rrr"],
+'3':["rrr", "  r", "rrr", "  r", "rrr"],
+'4':["r r", "r r", "rrr", "  r", "  r"],
+'5':["rrr", "r  ", "rrr", "  r", "rrr"],
+'6':["rrr", "r  ", "rrr", "r r", "rrr"],
+'7':["rrr", "  r", "  r", "  r", "  r"],
+'8':["rrr", "r r", "rrr", "r r", "rrr"],
+'9':["rrr", "r r", "rrr", "  r", "rrr"],
+'A':[" A ", "A A", "AAA", "A A", "A A"],
+'P':["PPP", "P P", "PPP", "P  ", "P  "],
+'M':["M   M", "MM MM", "M M M", "M   M", "M   M"]}
+permitted=["a","b","c","d","e","g","h","k","m","n","o","p","q","r","s","u","v","w","x","y","z","@","$","&","*","="]
+####################YV#########################3
+tm = input("Enter the time: ")
 ct= input ("Choose the clock type (12 or 24): ")
 pc= input("Choose your preferred character: ")
-# we translate 24 hr time to 12 hr time if asked in ct
+while pc not in permitted:
+    pc = input("Character not permitted! Try again: ")
+########################AP###########################
+hours= int(tm[0:2])
+minutes= tm[3:5]
 if ct== "12":
-    if int(tm[0:2])>12:
-        tm = str(int(tm[0:2])-12)+tm[2:5]
-# we identify what numbers are in the time
-numbers = tm.split(":")
-print(len(numbers))
-if len(numbers) == 2:
-    numbers.insert(0,"0")
-print(numbers)
-# we create the display board
-board = []
-for i in range(5):
-    row = []
-    for j in range(23):
-        row.append(".")
-    board.append(row)
-#makes an initial board state
-for  i in range(1):
-    for r in range(len(board)):
-        for c in range(len(board[r])):
-            print(board[r][c], end="")
-        print()
+    if hours==0:
+        hours=12
+    elif hours>12:
+        hours=hours-12
+        end="PM"
+    else:
+        end="AM"
+#####################JR######################
+hours=str(hours)
+minutes=str(minutes)
+if ct=="12":
+    tm=(hours+":"+minutes+end)
+if ct=="24":
+    tm=(hours+":"+minutes)
+for r in range(5):
+    fi = ""
+    for i in tm:
+        if i in Font:
+            grid = Font[i][r]
+            grid= grid.replace("r", pc)
+            fi += grid + " "
+    print(fi)
